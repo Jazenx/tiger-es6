@@ -86,23 +86,27 @@ __webpack_require__(2);
 "use strict";
 
 
-function test() {
-  var a = 2;
-  for (var i = 0; i < 3; i++) {
-    console.log(i);
-  }
+{
+  // es5
+  var regx = new RegExp('xyz', 'i');
+  var regx2 = new RegExp(/xyz/i);
+  console.log(regx.test('xyz123'), regx2.test('xyz123'));
+
+  // es6
+  // es6后面的修饰符会覆盖前面正则表达式所使用的修饰符
+  var regx3 = new RegExp(/xyz/ig, 'i');
+  console.log(regx3.flags);
 }
 
-function last() {
-  var PI = 3.1315926;
-  var k = {
-    a: 1
-  };
-  k.b = 3;
-  console.log(k);
+{
+  var s = 'bbb_bb_b';
+  var a1 = /b+/g;
+  var a2 = new RegExp('b+', 'y');
+  console.log('one', a1.exec(s), a2.exec(s));
+  console.log('two', a1.exec(s), a2.exec(s));
+  // sticy看是否使用y修饰符
+  console.log(a1.sticky, s2.sticky);
 }
-
-last();
 
 /***/ })
 /******/ ]);
